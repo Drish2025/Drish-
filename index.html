@@ -1,161 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Drish Quality Products</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Drish Quality Products</title>
 
-  <!-- Razorpay Script -->
-  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-  <style body {
+body {
   background: #0b0b0b;
-  color: #ffffff;
+  color: white;
   font-family: Arial, sans-serif;
 }
 
-.products {
-  display: block;
-}
-
-.luxury-card {
-  background: #111;
-  border-radius: 16px;
+header {
   padding: 16px;
-  width: 100%;
-  box-sizing: border-box;
+  text-align: center;
+  background: #000;
 }
 
-.luxury-card h3 {
-  margin-top: 12px;
+.container {
+  padding: 16px;
 }
 
-.main-img {
+.product {
+  background: #111;
+  border-radius: 14px;
+  padding: 14px;
+  max-width: 420px;
+  margin: auto;
+}
+
+.product img {
   width: 100%;
-  height: auto;
-  display: block;
   border-radius: 12px;
+  display: block;
 }
 
 .thumbs {
   display: flex;
-  gap: 8px;
-  margin-top: 8px;
+  gap: 10px;
+  margin-top: 10px;
 }
 
 .thumbs img {
   width: 50%;
-  height: auto;
-  border-radius: 8px;
+  border-radius: 10px;
 }
 
 .price {
   font-size: 22px;
-  font-weight: bold;
   color: #e50914;
   margin: 10px 0;
+  font-weight: bold;
 }
 
 button {
   width: 100%;
-  background: #e50914;
-  border: none;
   padding: 14px;
-  font-size: 16px;
-  border-radius: 8px;
+  border-radius: 10px;
+  border: none;
+  background: #e50914;
   color: white;
+  font-size: 16px;
   cursor: pointer;
 }
 
 .secure {
   text-align: center;
   font-size: 12px;
-  color: #888;
-  margin-top: 10px;
+  color: #aaa;
+  margin-top: 8px;
 }
-     <script src="https://checkout.razorpay.com/v1/checkout.js"></script></style>
+</style>
 </head>
 
 <body>
 
 <header>
   <h1>Drish Quality Products</h1>
-  <p>Premium Watches | Secure Online Payment</p>
+  <p>Premium Watches</p>
 </header>
 
 <div class="container">
-  <div class="products">
+  <div class="product">
 
+    <img src="image-63.png" alt="Watch Hero">
 
-    <div class="card">
-  <img src="image-63.png" class="main-img">
+    <div class="thumbs">
+      <img src="watch-main.jpg">
+      <img src="watch-life.jpg">
+    </div>
 
-  <div class="thumbs">
-    <img src="watch-main.jpg">
-    <img src="watch-life.jpg">
-  </div>
+    <h3>Luxury Chronograph Watch</h3>
+    <div class="price">₹1,999</div>
 
-  <h3>Luxury Chronograph Watch</h3>
-  <div class="price">₹599</div>
+    <button>Buy Now</button>
 
-  <button onclick="payNow('Car Wheel Spinning 360° Watch',599)">
-    Buy Now
-  </button>
-
-  <div class="secure">🔒 Secure Razorpay Payment</div>
-</div>
-
+    <div class="secure">🔒 Secure Payment</div>
 
   </div>
 </div>
-
-<footer>
-  © 2025 Drish Quality Products
-</footer>
-
-<script>
-  function payNow(product, amount) {
-    var options = {
-      "key": "rzp_test_RsL5q1IacpAAeJ",
-      "amount": amount * 100,
-      "currency": "INR",
-      "name": "Drish Quality Products",
-      "description": product,
-      "handler": function (response){
-  const productName = product;
-  const amountPaid = amount;
-  const paymentId = response.razorpay_payment_id;
-
-  // WhatsApp message
-  const whatsappMsg = 
-    `New Order Received%0A` +
-    `Product: ${productName}%0A` +
-    `Amount: ₹${amountPaid}%0A` +
-    `Payment ID: ${paymentId}`;
-
-  // Open WhatsApp
-  window.open(
-    `https://wa.me/919518671644?text=${whatsappMsg}`,
-    "_blank"
-  );
-
-  // Open Email draft
-  window.location.href =
-    `mailto:drish13122025@gmail.com?subject=New Order - Drish Quality Products&body=` +
-    `Product: ${productName}%0A` +
-    `Amount: ₹${amountPaid}%0A` +
-    `Payment ID: ${paymentId}`;
-
-  alert("Payment Successful! Order details sent.");
-},
-      "theme": {
-        "color": "#000000"
-      }
-    };
-    var rzp1 = new Razorpay(options);
-    rzp1.open();
-  }
-</script>
 
 </body>
 </html>
