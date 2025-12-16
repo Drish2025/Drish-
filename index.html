@@ -8,15 +8,81 @@
   <!-- Razorpay Script -->
   <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 
-  <style>
-    body { font-family: Arial, sans-serif; margin:0; background:#f4f4f4; }
-    header { background:#000; color:#fff; padding:15px; text-align:center; }
-    .container { padding:20px; }
-    .products { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:20px; }
-    .card { background:#fff; padding:15px; border-radius:10px; box-shadow:0 4px 10px rgba(0,0,0,.1); }
-    button { background:#000; color:#fff; border:none; padding:12px; width:100%; border-radius:6px; margin-top:10px; font-size:16px; }
-    footer { text-align:center; padding:15px; color:#666; }
-  </style>
+  <style body {
+  background: #0b0b0b;
+  color: #ffffff;
+  font-family: Arial, sans-serif;
+}
+
+.products {
+  display: flex;
+  justify-content: center;
+}
+
+.luxury-card {
+  background: #111;
+  border-radius: 16px;
+  padding: 20px;
+  max-width: 360px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.7);
+}
+
+.luxury-card h3 {
+  margin-top: 12px;
+}
+
+.main-img {
+  width: 100%;
+  border-radius: 12px;
+}
+
+.thumbs {
+  display: flex;
+  gap: 10px;
+  margin: 12px 0;
+}
+
+.thumbs img {
+  width: 48%;
+  border-radius: 8px;
+  opacity: 0.85;
+}
+
+.price {
+  font-size: 22px;
+  font-weight: bold;
+  color: #e50914;
+}
+
+.features {
+  list-style: none;
+  padding: 0;
+  font-size: 14px;
+  color: #ccc;
+}
+
+.features li {
+  margin-bottom: 6px;
+}
+
+button {
+  width: 100%;
+  background: #e50914;
+  border: none;
+  padding: 14px;
+  font-size: 16px;
+  border-radius: 8px;
+  color: white;
+  cursor: pointer;
+}
+
+.secure {
+  text-align: center;
+  font-size: 12px;
+  color: #888;
+  margin-top: 10px;
+}
+     </style>
 </head>
 
 <body>
@@ -35,11 +101,23 @@
       <button onclick="payNow('Luxury Chronograph Watch',1999)">Buy Now</button>
     </div>
 
-    <div class="card">
-      <h3>Classic Leather Watch</h3>
-      <p>₹1,799</p>
-      <button onclick="payNow('Classic Leather Watch',1799)">Buy Now</button>
-    </div>
+    <div class="luxury-card">
+  <img src="watch-hero.jpg" class="main-img">
+
+  <div class="thumbs">
+    <img src="watch-main.jpg">
+    <img src="watch-life.jpg">
+  </div>
+
+  <h3>Luxury Chronograph Watch</h3>
+  <div class="price">₹1,999</div>
+
+  <button onclick="payNow('Luxury Chronograph Watch',1999)">
+    Buy Now
+  </button>
+
+  <div class="secure">🔒 Secure Razorpay Payment</div>
+</div>
 
     <div class="card">
       <h3>Premium Steel Watch</h3>
