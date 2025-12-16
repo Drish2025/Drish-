@@ -15,16 +15,15 @@
 }
 
 .products {
-  display: flex;
-  justify-content: center;
+  display: block;
 }
 
 .luxury-card {
   background: #111;
   border-radius: 16px;
   padding: 16px;
-  max-width: 360px;
-  box-shadow: 0 15px 40px rgba(0,0,0,0.7);
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .luxury-card h3 {
@@ -34,19 +33,20 @@
 .main-img {
   width: 100%;
   height: auto;
-  border-radius: 12px;
   display: block;
+  border-radius: 12px;
+}
+
+.thumbs {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
 }
 
 .thumbs img {
-  width: 48%;
+  width: 50%;
   height: auto;
   border-radius: 8px;
-}
-.thumbs img {
-  width: 48%;
-  border-radius: 8px;
-  opacity: 0.85;
 }
 
 .price {
@@ -87,7 +87,7 @@ button {
   <div class="products">
 
 
-    <div class="luxury-card">
+    <div class="card">
   <img src="image-63.png" class="main-img">
 
   <div class="thumbs">
@@ -98,7 +98,7 @@ button {
   <h3>Luxury Chronograph Watch</h3>
   <div class="price">₹599</div>
 
-  <button onclick="payNow('Luxury Chronograph Watch',599)">
+  <button onclick="payNow('Car Wheel Spinning 360° Watch',599)">
     Buy Now
   </button>
 
