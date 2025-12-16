@@ -63,8 +63,32 @@
       "name": "Drish Quality Products",
       "description": product,
       "handler": function (response){
-        alert("Payment Successful! Payment ID: " + response.razorpay_payment_id);
-      },
+  const productName = product;
+  const amountPaid = amount;
+  const paymentId = response.razorpay_payment_id;
+
+  // WhatsApp message
+  const whatsappMsg = 
+    `New Order Received%0A` +
+    `Product: ${productName}%0A` +
+    `Amount: ₹${amountPaid}%0A` +
+    `Payment ID: ${paymentId}`;
+
+  // Open WhatsApp
+  window.open(
+    `https://wa.me/919518671644?text=${whatsappMsg}`,
+    "_blank"
+  );
+
+  // Open Email draft
+  window.location.href =
+    `mailto:drish13122025@gmail.com?subject=New Order - Drish Quality Products&body=` +
+    `Product: ${productName}%0A` +
+    `Amount: ₹${amountPaid}%0A` +
+    `Payment ID: ${paymentId}`;
+
+  alert("Payment Successful! Order details sent.");
+},
       "theme": {
         "color": "#000000"
       }
