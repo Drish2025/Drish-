@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Drish Quality Products</title>
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 
 <style>
 * {
@@ -100,12 +101,34 @@ button {
     <h3>Car Wheel Spinning 360° Luxury Mens Watch</h3>
     <div class="price">₹599</div>
 
-    <button>Buy Now</button>
+    <button onclick="payNow()">Buy Now</button>
 
     <div class="secure">🔒 Secure Payment</div>
 
   </div>
 </div>
+<script>
+function payNow() {
+  var options = {
+    key: "rzp_test_RsL5q1IacpAAeJ", // test key
+    amount: 599 * 100, // ₹599
+    currency: "INR",
+    name: "Drish Quality Products",
+    description: "Car Wheel Spinning 360° Luxury Mens Watch",
+    handler: function (response) {
+      alert(
+        "Payment Successful!\n\n" +
+        "Payment ID: " + response.razorpay_payment_id
+      );
+    },
+    theme: {
+      color: "#000000"
+    }
+  };
 
+  var rzp = new Razorpay(options);
+  rzp.open();
+}
+</script>
 </body>
 </html>
