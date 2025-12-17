@@ -96,6 +96,16 @@ button {
   color: #aaa;
   margin-top: 8px;
 }
+  .cod-btn {
+  margin-top: 8px;
+  background: #1f7a1f;
+  color: white;
+  border: none;
+  padding: 10px;
+  width: 100%;
+  border-radius: 8px;
+  font-size: 14px;
+  }
 </style>
 </head>
 
@@ -194,6 +204,17 @@ function payNow() {
   var rzp = new Razorpay(options);
   rzp.open();
 }
+  function orderCOD(product, price) {
+  var message =
+    "Hello Drish Quality Products,%0A%0A" +
+    "I want to place a *Cash on Delivery* order.%0A%0A" +
+    "📦 Product: " + product + "%0A" +
+    "💰 Price: ₹" + price + "%0A%0A" +
+    "Please confirm availability.";
+
+  var phone = "919518671644"; // your WhatsApp number
+  window.open("https://wa.me/" + phone + "?text=" + message, "_blank");
+  }
 </script>
 </body>
 </html>
