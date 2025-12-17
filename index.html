@@ -130,17 +130,45 @@ button {
   border-radius: 14px;
   padding: 14px;
 }
+  .site-header {
+  background: #000;
+  padding: 14px 16px;
+  border-bottom: 1px solid #222;
+  text-align: center;
+}
+
+.brand h1 {
+  margin: 0;
+  font-size: 24px;
+  letter-spacing: 1px;
+}
+
+.brand span {
+  font-size: 12px;
+  color: #aaa;
+  display: block;
+  margin-top: -2px;
+}
+
+.tagline {
+  margin-top: 6px;
+  font-size: 12px;
+  color: #ccc;
+}
 </style>
 </head>
 
 <body>
 
-<header>
-  <h1>Drish Quality Products</h1>
-  <p>Premium Watches</p>
-  <p style="font-size:12px;color:#ccc;">
-  🔒 Secure Online Payment • 💵 Cash on Delivery Available
-  </p>
+<header class="site-header">
+  <div class="brand">
+    <h1>Drish</h1>
+    <span>Quality Products</span>
+  </div>
+
+  <div class="tagline">
+    Premium Watches • Cash on Delivery Available
+  </div>
 </header>
 
 <div class="container">
