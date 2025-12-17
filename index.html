@@ -112,6 +112,24 @@ button {
   color: #9be79b;
   text-align: center;
   }
+  .products {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+/* Desktop view */
+@media (min-width: 768px) {
+  .products {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.product {
+  background: #111;
+  border-radius: 14px;
+  padding: 14px;
+}
 </style>
 </head>
 
