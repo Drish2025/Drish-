@@ -202,6 +202,11 @@ button {
   font-size: 12px;
   color: #777;
 }
+  .cart-bar {
+  margin-top: 6px;
+  font-size: 14px;
+  color: #ccc;
+  }
 </style>
 </head>
 
@@ -209,10 +214,12 @@ button {
 
 <header class="site-header">
   <div class="brand-logo">
+    <div class="cart-bar">
+  🛒 Cart: <span id="cart-count">0</span>
+    </div>
   <span class="logo-main">DRISH</span>
   <span class="logo-sub">Quality Products</span>
   </div>
-
   <div class="tagline">
     Premium Watches • Cash on Delivery Available
   </div>
@@ -226,8 +233,10 @@ button {
     <img src="image-63.png" alt="Car Wheel Watch">
     <h3>Car Wheel Spinning 360° Luxury Mens Watch</h3>
     <div class="price">₹599</div>
-    <button onclick="payNow()">Buy Now</button>
-
+    
+<button onclick="addToCart('Car Wheel Spinning Watch', 599)">
+  Add to Cart
+</button>
 <button class="cod-btn" onclick="orderCOD()">
   Cash on Delivery
 </button>
@@ -243,7 +252,9 @@ button {
     <img src="image-50.png" alt="Classic Black Watch">
     <h3>Stainless Steel Analog Watch</h3>
     <div class="price">₹599</div>
-    <button onclick="payNow()">Buy Now</button>
+    <button onclick="addToCart('Car Wheel Spinning Watch', 599)">
+  Add to Cart
+    </button>
     <button class="cod-btn" onclick="orderCOD()">
   Cash on Delivery
 </button>
@@ -259,7 +270,9 @@ button {
     <img src="image-55.png" alt="Premium Watch">
     <h3>Premium Luxury Watch</h3>
     <div class="price">₹599</div>
-    <button onclick="payNow()">Buy Now</button>
+    <button onclick="addToCart('Car Wheel Spinning Watch', 599)">
+  Add to Cart
+    </button>
     <button class="cod-btn" onclick="orderCOD()">
   Cash on Delivery
 </button>
@@ -277,11 +290,15 @@ button {
 
   <h3>Stainless Steels Analog Watch Men</h3>
   <div class="price">₹599</div>
-  <button onclick="payNow()">Buy Now</button>
+  <button onclick="addToCart('Car Wheel Spinning Watch', 599)">
+  Add to Cart
+  </button>
   <button class="cod-btn" onclick="orderCOD()">
   Cash on Delivery
 </button>
-
+<button style="margin-top:20px;" onclick="checkout()">
+  Proceed to Checkout
+</button>
 <div class="cod-note">
   ✔ Cash on Delivery available<br>
   📦 Delivered in 3–5 days
@@ -348,5 +365,25 @@ function payNow() {
     © 2025 Drish Quality Products. All rights reserved.
   </div>
   </footer>
+  <script>
+let cart = [];
+
+function addToCart(name, price) {
+  cart.push({ name, price });
+  document.getElementById("cart-count").innerText = cart.length;
+  alert(name + " added to cart");
+}
+
+function checkout() {
+  if (cart.length === 0) {
+    alert("Your cart is empty");
+    return;
+  }
+
+  let total = cart.reduce((sum, item) => sum + item.price, 0);
+
+  payNow(total);
+}
+  </script>
 </body>
 </html>
