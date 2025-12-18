@@ -324,20 +324,25 @@ button {
 </div>
 <script>
 function payNow() {
+  var originalPrice = 599;
+  var discount = originalPrice * 0.05; // 5% discount
+  var finalPrice = Math.round(originalPrice - discount); // ₹569
+
   var options = {
-    key: "rzp_test_RsL5q1IacpAAeJ", // test key
-    amount: 599 * 100, // ₹599
+    key: "rzp_test_RsL5q1IacpAAeJ",
+    amount: finalPrice * 100,
     currency: "INR",
     name: "Drish Quality Products",
-    description: "Car Wheel Spinning 360° Luxury Mens Watch",
+    description: "Online Payment (5% OFF)",
     handler: function (response) {
       alert(
-        "Payment Successful!\n\n" +
+        "Payment Successful!\n" +
+        "Paid: ₹" + finalPrice + "\n" +
         "Payment ID: " + response.razorpay_payment_id
       );
     },
     theme: {
-      color: "#000000"
+      color: "#e50914"
     }
   };
 
