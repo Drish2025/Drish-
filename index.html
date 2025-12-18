@@ -395,7 +395,7 @@ button {
 </div>
 <script>
 function payNow(price) {
-  var discount = price * 0.05; // 5% discount
+  var discount = price * 0.05;
   var finalPrice = Math.round(price - discount);
 
   var options = {
@@ -406,7 +406,7 @@ function payNow(price) {
     description: "Online Payment (5% OFF)",
     handler: function (response) {
       alert(
-        "Payment Successful!\n\n" +
+        "Payment Successful\n" +
         "Paid: ₹" + finalPrice + "\n" +
         "Payment ID: " + response.razorpay_payment_id
       );
@@ -417,19 +417,35 @@ function payNow(price) {
   };
 
   var rzp = new Razorpay(options);
+  rzp.on('payment.failed', function (response) {
+  alert("Payment Failed");
+  console.log(response.error);
+});
   rzp.open();
+
+  rzp.on('payment.failed', function () {
+    alert("Payment Failed");
+  });
 }
-  function orderCOD(product, price) {
+</script>
+function orderCOD(product, price) {
+  var phone = "919518671644";
+
   var message =
-    "Hello Drish Quality Products,%0A%0A" +
-    "I want to place a *Cash on Delivery* order.%0A%0A" +
-    "📦 Product: " + product + "%0A" +
-    "💰 Price: ₹" + price + "%0A%0A" +
+    "Hello Drish Quality Products\n\n" +
+    "🛒 Cash on Delivery Order\n" +
+    "📦 Product: " + product + "\n" +
+    "💰 Price: ₹" + price + "\n\n" +
     "Please confirm availability.";
 
-  var phone = "919518671644"; // your WhatsApp number
-  window.open("https://wa.me/" + phone + "?text=" + message, "_blank");
-  }
+  var url =
+    "https://wa.me/" +
+    phone +
+    "?text=" +
+    encodeURIComponent(message);
+
+  window.open(url, "_blank");
+}
 </script>
   <footer class="site-footer">
   <div class="footer-brand">
