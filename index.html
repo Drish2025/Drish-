@@ -265,13 +265,13 @@ button {
     <img src="image-63.png" alt="Car Wheel Watch">
     <h3>Car Wheel Spinning 360° Luxury Mens Watch</h3>
     <div class="price-row">
-  <del class="old-price">₹13,499</del>
-  <span class="new-price">₹3,599</span>
-  <span class="save-text">Save 73%</span>
+  <del class="old-price">₹1100</del>
+  <span class="new-price">₹599</span>
+  <span class="save-text">Save 45%</span>
     </div>
 <div class="discount-note">Pay Online & Save 5%</div>
-  <button onclick="payNow(3599)">Buy Now (5% OFF)</button>
-<button class="cod-btn" onclick="orderCOD()">
+  <button onclick="payNow(599)">Buy Now (5% OFF)</button>
+<button class="cod-btn" onclick="orderCOD('Car Wheel Spinning Watch', 599)">
   Cash on Delivery
 </button>
     <div class="discount-note">
@@ -289,16 +289,16 @@ button {
     <img src="image-50.png" alt="Classic Black Watch">
     <h3>Stainless Steel Analog Watch</h3>
     <div class="price-row">
-  <del class="old-price">₹13,499</del>
-  <span class="new-price">₹3,599</span>
-  <span class="save-text">Save 73%</span>
+  <del class="old-price">₹1100</del>
+  <span class="new-price">₹599</span>
+  <span class="save-text">Save 45%</span>
 </div>
 
 <div class="discount-note">Pay Online & Save 5%</div>
-  <button onclick="payNow(3599)">Buy Now (5% OFF)</button>
+  <button onclick="payNow(599)">Buy Now (5% OFF)</button>
   Buy Now (5% OFF)
-</button>
-    <button class="cod-btn" onclick="orderCOD()">
+  </button>
+    <button class="cod-btn" onclick="orderCOD('Car Wheel Spinning Watch', 599)">
   Cash on Delivery
 </button>
     </button>
@@ -317,16 +317,16 @@ button {
     <img src="image-55.png" alt="Premium Watch">
     <h3>Premium Luxury Watch</h3>
     <div class="price-row">
-  <del class="old-price">₹13,499</del>
-  <span class="new-price">₹3,599</span>
+  <del class="old-price">₹1300</del>
+  <span class="new-price">₹399</span>
   <span class="save-text">Save 73%</span>
 </div>
 
 <div class="discount-note">Pay Online & Save 5%</div>
-    <button onclick="payNow(950)">
+    <button onclick="payNow(399)">
   Buy Now (5% OFF)
 </button>
-    <button class="cod-btn" onclick="orderCOD()">
+    <button class="cod-btn" onclick="orderCOD('Car Wheel Spinning Watch', 399)">
   Cash on Delivery
 </button>
     </button>
@@ -347,14 +347,14 @@ button {
 
   <h3>Stainless Steels Analog Watch Men</h3>
   <div class="price-row">
-  <del class="old-price">₹13,499</del>
-  <span class="new-price">₹3,599</span>
+  <del class="old-price">₹1300</del>
+  <span class="new-price">₹399</span>
   <span class="save-text">Save 73%</span>
 </div>
 
 <div class="discount-note">Pay Online & Save 5%</div>
-  <button onclick="payNow(3599)">Buy Now (5% OFF)</button>
-  <button class="cod-btn" onclick="orderCOD()">
+  <button onclick="payNow(399)">Buy Now (5% OFF)</button>
+  <button class="cod-btn" onclick="orderCOD('Car Wheel Spinning Watch', 3599)">
   Cash on Delivery
 </button>
       <div class="discount-note">
@@ -379,7 +379,7 @@ button {
 
 <div class="discount-note">Pay Online & Save 5%</div>
   <button onclick="payNow(3599)">Buy Now (5% OFF)</button>
-    <button class="cod-btn" onclick="orderCOD()">
+    <button class="cod-btn" onclick="orderCOD('Car Wheel Spinning Watch', 3599)">
   Cash on Delivery
 </button>
     </button>
@@ -397,20 +397,20 @@ button {
   </div>
 </div>
 <script>
-function payNow() {
-  var originalPrice = 599;
-  var discount = originalPrice * 0.05; // 5% discount
-  var finalPrice = Math.round(originalPrice - discount); // ₹569
+<script>
+function payNow(price) {
+  var discount = price * 0.05; // 5% discount
+  var finalPrice = Math.round(price - discount);
 
   var options = {
-    key: "rzp_test_RsL5q1IacpAAeJ",
+    key: "rzp_test_RsL5qIacpAAeJ",
     amount: finalPrice * 100,
     currency: "INR",
     name: "Drish Quality Products",
     description: "Online Payment (5% OFF)",
     handler: function (response) {
       alert(
-        "Payment Successful!\n" +
+        "Payment Successful!\n\n" +
         "Paid: ₹" + finalPrice + "\n" +
         "Payment ID: " + response.razorpay_payment_id
       );
@@ -423,6 +423,7 @@ function payNow() {
   var rzp = new Razorpay(options);
   rzp.open();
 }
+</script>
   function orderCOD(product, price) {
   var message =
     "Hello Drish Quality Products,%0A%0A" +
