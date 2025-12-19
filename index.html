@@ -400,29 +400,46 @@ onclick="orderCOD('Premium Luxury Watch', 599)">
   </div>
 </div>
 <script>
-function payNow(price) {
-  var discount = price * 0.05;
-  var finalPrice = Math.round(price - discount);
+async function payNow(price) {
+  try {
+    // 5% discount
+    const finalPrice = Math.round(price * 0.95);
 
-  var options = {
-    key: "rzp_test_RsL5qIacpAAeJ",
-    amount: finalPrice * 100,
-    currency: "INR",
-    name: "Drish Quality Products",
-    description: "Online Payment (5% OFF)",
-    handler: function (response) {
-      alert(
-        "Payment Successful!\n\n" +
-        "Paid: ₹" + finalPrice + "\n" +
-        "Payment ID: " + response.razorpay_payment_id
-      );
-    },
-    theme: { color: "#e50914" }
-  };
+    const res = await fetch(
+      "https://drish-backend.onrender.com/create-order",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ amount: finalPrice })
+      }
+    );
 
-  var rzp = new Razorpay(options);
-  rzp.open();
-}
+    const order = await res.json();
+
+    const options = {
+      key: "rzp_test_RsL5qIacpAAeJ",
+      amount: order.amount,
+      currency: "INR",
+      name: "Drish Quality Products",
+      description: "Online Payment (5% OFF)",
+      order_id: order.id,
+      handler: function (response) {
+        alert(
+          "Payment Successful!\n\n" +
+          "Paid: ₹" + finalPrice + "\n" +
+          "Payment ID: " + response.razorpay_payment_id
+        );
+      },
+      theme: { color: "#e50914" }
+    };
+
+    const rzp = new Razorpay(options);
+    rzp.open();
+
+  } catch (err) {
+    alert("Payment error. Please try again.");
+    console.error(err);
+  }
 
 function orderCOD(product, price) {
   var phone = "919518671644";
