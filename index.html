@@ -418,14 +418,12 @@ function payNow(price) {
 
   var rzp = new Razorpay(options);
   rzp.on('payment.failed', function (response) {
-  alert("Payment Failed");
+  alert(
+    "Payment Failed\n" +
+    response.error.description
+  );
   console.log(response.error);
 });
-  rzp.open();
-
-  rzp.on('payment.failed', function () {
-    alert("Payment Failed");
-  });
 }
 </script>
 function orderCOD(product, price) {
