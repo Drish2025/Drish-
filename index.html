@@ -395,6 +395,7 @@ button {
 </div>
 <script>
 function payNow(price) {
+
   var discount = price * 0.05;
   var finalPrice = Math.round(price - discount);
 
@@ -404,6 +405,7 @@ function payNow(price) {
     currency: "INR",
     name: "Drish Quality Products",
     description: "Online Payment (5% OFF)",
+
     handler: function (response) {
       alert(
         "Payment Successful\n" +
@@ -411,19 +413,25 @@ function payNow(price) {
         "Payment ID: " + response.razorpay_payment_id
       );
     },
+
+    modal: {
+      ondismiss: function () {
+        console.log("Checkout closed");
+      }
+    },
+
     theme: {
       color: "#e50914"
     }
   };
 
   var rzp = new Razorpay(options);
+
   rzp.on('payment.failed', function (response) {
-  alert(
-    "Payment Failed\n" +
-    response.error.description
-  );
-  console.log(response.error);
-});
+    alert("Payment Failed\n" + response.error.description);
+  });
+
+  rzp.open();
 }
 function orderCOD(product, price) {
   var phone = "919518671644";
